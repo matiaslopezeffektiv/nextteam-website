@@ -1,2 +1,10 @@
 .vercel
 .env*
+.DS_Store
+
+# Purchased budgeto template package — reference only, never deploy/commit
+/budgeto/
+/budgeto-with-smooth-scroll/
+/documentation/
+/budgeto-source.zip
+/zib7wC7S

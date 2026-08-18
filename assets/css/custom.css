@@ -17,9 +17,40 @@
   --nt-text:        #1C2E4A;
 }
 
+/* Bootstrap rows with large gutters (`g-5`) are wider than their container by half
+   the gutter on each side, which produced ~9px of horizontal scroll on phones.
+   Safe here because the sticky header is `position: fixed`, not `sticky`. */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* `px-40` is used on the header container but is defined by neither
+   main.css nor spacing.css, so the header sat flush against the viewport edge. */
+.px-40 { padding-left: 40px; padding-right: 40px; }
+@media (max-width: 767px) {
+  .px-40 { padding-left: 18px; padding-right: 18px; }
+}
+
 /* --- Override Budgeto primary/theme colors --- */
+/* `.tp-btn` is a Next Team class (not a budgeto one), so it needs its own
+   geometry as well as its colour — otherwise it renders as bare text on a block. */
 .tp-btn,
 .tp-btn-2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 26px;
+  border-radius: 26px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .25s ease, transform .25s ease, box-shadow .25s ease;
   background-color: var(--nt-orange) !important;
   border-color: var(--nt-orange) !important;
   color: var(--nt-white) !important;
@@ -28,6 +59,8 @@
 .tp-btn-2:hover {
   background-color: var(--nt-orange-dark) !important;
   border-color: var(--nt-orange-dark) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(244,124,32,0.30);
 }
 
 /* Secondary / outline button */
@@ -41,6 +74,20 @@
 }
 
 /* --- Navbar --- */
+/* budgeto capitalises every submenu word, which is wrong for Swedish sentence case
+   ("Bemanning Vid Arbetstoppar"). */
+.tp-main-menu > nav > ul > li > .submenu li a,
+.tp-main-menu > nav > ul > li > a,
+.tpoffcanvas .tp-offcanvas-menu a { text-transform: none !important; }
+
+/* Off-canvas (mobile) menu links: navy by default, orange for active/hover */
+.tpoffcanvas .tp-offcanvas-menu nav ul li a { color: var(--nt-navy) !important; }
+.tpoffcanvas .tp-offcanvas-menu nav ul li a:hover,
+.tpoffcanvas .tp-offcanvas-menu nav ul li.active > a { color: var(--nt-orange) !important; }
+.tpoffcanvas .tpoffcanvas__contact-info ul { list-style: none; padding-left: 0; }
+.tpoffcanvas .tpoffcanvas__contact-info a { color: var(--nt-navy) !important; text-decoration: none; }
+.tpoffcanvas .tpoffcanvas__contact-info a:hover { color: var(--nt-orange) !important; }
+
 .tpheader {
   background-color: var(--nt-white) !important;
 }
@@ -139,7 +186,10 @@
   font-size: 1.05rem;
   font-weight: 600;
   letter-spacing: 0.01em;
+  /* main.css colours `p` explicitly, so white has to be restated here */
+  color: var(--nt-white);
 }
+.nt-offer-banner strong { color: var(--nt-white); }
 .nt-offer-banner span {
   background: rgba(255,255,255,0.2);
   padding: 2px 10px;
@@ -282,8 +332,11 @@
 .tpfooter-widget__title::after {
   background-color: var(--nt-orange) !important;
 }
+.tpfooter__link { list-style: none; padding-left: 0; margin-bottom: 0; }
+.tpfooter__link li { list-style: none; margin-bottom: 10px; }
 .tpfooter__link li a {
   color: rgba(255,255,255,0.7) !important;
+  text-decoration: none;
 }
 .tpfooter__link li a:hover {
   color: var(--nt-orange) !important;
@@ -423,6 +476,316 @@
 @media (max-width: 480px) {
   .nt-modal .row-2col { grid-template-columns: 1fr; }
   .nt-modal { padding: 32px 20px; }
+}
+
+/* ============================================================
+   BUDGETO THEME REMAP
+   main.css ships budgeto's demo palette (teal #1F3130 /
+   peach #F8D0B3) as CSS variables. Re-point those variables at
+   the Next Team brand so every budgeto component class picks up
+   our colours without per-element overrides.
+   ============================================================ */
+:root {
+  --tp-theme-primary:   #1C2E4A;   /* was #1f3130 teal   -> navy   */
+  --tp-theme-secondary: #FDE4CE;   /* was #f8d0b3 peach  -> orange tint */
+  --tp-grey-1: #6c757d;
+  --tp-grey-2: #4a5568;
+  --tp-grey-3: #e9edf3;
+  --tp-grey-4: #F5F6F8;
+  --tp-common-white-2: #F5F6F8;
+  --tp-border-1: rgba(28, 46, 74, 0.10);
+  --tp-border-2: rgba(28, 46, 74, 0.12);
+}
+
+/* Budgeto renders CTA buttons in the primary colour; Next Team's
+   call-to-action colour is orange. Target buttons only (elements),
+   so large `tp-bg-theme-primary` section panels stay navy. */
+a[class*="tp-btn-"].tp-bg-theme-primary,
+button[class*="tp-btn-"].tp-bg-theme-primary {
+  background-color: var(--nt-orange) !important;
+  color: var(--nt-white) !important;
+}
+a[class*="tp-btn-"].tp-bg-theme-primary:hover,
+button[class*="tp-btn-"].tp-bg-theme-primary:hover {
+  background-color: var(--nt-orange-dark) !important;
+  color: var(--nt-white) !important;
+}
+/* Outlined buttons */
+a[class*="tp-btn-"].border-full-1 {
+  border-color: rgba(28, 46, 74, 0.25) !important;
+  color: var(--nt-navy) !important;
+}
+a[class*="tp-btn-"].border-full-1:hover {
+  background-color: var(--nt-navy) !important;
+  border-color: var(--nt-navy) !important;
+  color: var(--nt-white) !important;
+}
+/* Light button sitting on a navy panel */
+a[class*="tp-btn-"].tp-bg-common-white { color: var(--nt-navy) !important; }
+a[class*="tp-btn-"].tp-bg-common-white:hover {
+  background-color: var(--nt-orange) !important;
+  color: var(--nt-white) !important;
+}
+/* Soft orange-tint accent button */
+a[class*="tp-btn-"].tp-bg-theme-secondary { color: var(--nt-navy) !important; }
+a[class*="tp-btn-"].tp-bg-theme-secondary:hover {
+  background-color: var(--nt-orange) !important;
+  color: var(--nt-white) !important;
+}
+
+/* Budgeto's serif italic accent inside headings -> brand orange */
+.text-italic { color: var(--nt-orange); }
+.tp-text-common-white .text-italic,
+h2.tp-text-common-white .text-italic { color: var(--nt-orange-light); }
+
+/* Checklist ticks used across budgeto content blocks */
+.tp-about-bottom-feature ul li i,
+.tp-chose-list ul li i { color: var(--nt-orange) !important; }
+/* main.css sets `column-count: 2` on these lists; without a break rule a single
+   bullet splits across both columns mid-sentence. */
+.tp-about-bottom-feature ul li {
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  break-inside: avoid;
+  line-height: 1.6;
+}
+/* Long-form checklist on a dark panel: single column, light text */
+.tp-about-bottom-feature ul.nt-check--light { column-count: 1; margin-right: 0; }
+.tp-about-bottom-feature ul.nt-check--light li { color: rgba(255,255,255,0.78); margin-bottom: 16px; }
+
+/* Counters */
+.tp-counter-wrap h2, .tp-about-4-count-item h2 { color: var(--nt-navy) !important; }
+
+/* Section eyebrow label */
+.nt-eyebrow {
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--nt-orange);
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.nt-eyebrow-light { color: var(--nt-orange-light); }
+
+/* ============================================================
+   NEXT TEAM SECTION HELPERS (budgeto layouts, brand skin)
+   ============================================================ */
+
+/* Dark band used for hero/CTA/breadcrumb, painted with the
+   recoloured budgeto texture set in assets/img/ */
+.nt-dark-band { background-color: var(--nt-navy); position: relative; }
+.nt-dark-band::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(21,34,56,0.92) 0%, rgba(21,34,56,0.72) 55%, rgba(21,34,56,0.55) 100%);
+}
+.nt-dark-band > * { position: relative; z-index: 2; }
+
+/* Breadcrumb built on budgeto's tp-breadcrumb component */
+.tp-breadcrumb-area { background-color: var(--nt-navy); }
+.tp-breadcrumb-title { color: var(--nt-white) !important; }
+.tp-breadcrumb-dvdr ul li,
+.tp-breadcrumb-dvdr ul li a { color: rgba(255,255,255,0.72) !important; }
+.tp-breadcrumb-dvdr ul li a:hover { color: var(--nt-orange) !important; }
+.tp-breadcrumb-dvdr ul li:last-child { color: var(--nt-orange) !important; }
+
+/* Icon-led service / feature card (budgeto tp-service-8-item) */
+.nt-icon-card {
+  background: var(--nt-white);
+  border: 1px solid #e6eaf0;
+  border-radius: 12px;
+  padding: 34px 30px;
+  height: 100%;
+  transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
+}
+.nt-icon-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--nt-orange);
+  box-shadow: 0 16px 40px rgba(28,46,74,0.12);
+}
+.nt-icon-card__icon {
+  width: 58px; height: 58px;
+  border-radius: 14px;
+  background: rgba(244,124,32,0.12);
+  color: var(--nt-orange);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin-bottom: 22px;
+  transition: background .3s ease, color .3s ease;
+}
+.nt-icon-card:hover .nt-icon-card__icon {
+  background: var(--nt-orange);
+  color: var(--nt-white);
+}
+.nt-icon-card h3, .nt-icon-card h4 {
+  font-size: 1.15rem; font-weight: 700;
+  color: var(--nt-navy); margin-bottom: 10px;
+}
+.nt-icon-card h3 a, .nt-icon-card h4 a { color: inherit; text-decoration: none; }
+.nt-icon-card h3 a:hover, .nt-icon-card h4 a:hover { color: var(--nt-orange); }
+.nt-icon-card p { color: var(--nt-gray); font-size: .95rem; margin-bottom: 0; }
+.nt-icon-card__link {
+  display: inline-flex; align-items: center; gap: 8px;
+  margin-top: 18px; font-weight: 600; font-size: .9rem;
+  color: var(--nt-orange); text-decoration: none;
+}
+.nt-icon-card__link:hover { color: var(--nt-navy); }
+.nt-icon-card__link i { transition: transform .25s ease; }
+.nt-icon-card__link:hover i { transform: translateX(4px); }
+
+/* Numbered step (process / how it works) */
+.nt-step {
+  position: relative;
+  background: var(--nt-white);
+  border-radius: 12px;
+  padding: 38px 30px 32px;
+  height: 100%;
+  border: 1px solid #e6eaf0;
+}
+.nt-step__num {
+  position: absolute; top: -22px; left: 30px;
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--nt-orange); color: var(--nt-white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.05rem;
+  box-shadow: 0 8px 20px rgba(244,124,32,0.35);
+}
+.nt-step h4 { color: var(--nt-navy); font-weight: 700; font-size: 1.1rem; margin: 14px 0 10px; }
+.nt-step p { color: var(--nt-gray); font-size: .93rem; margin: 0; }
+
+/* Media panel with image + navy wash */
+.nt-media {
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+}
+.nt-media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.nt-media--tall { min-height: 420px; }
+
+/* Stat block on a dark background */
+.nt-stat h3 {
+  color: var(--nt-white);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  margin-bottom: 4px;
+  line-height: 1;
+}
+.nt-stat h3 span { color: var(--nt-orange); }
+.nt-stat p { color: rgba(255,255,255,0.65); margin: 0; font-size: .93rem; }
+
+/* Stat block on a light background */
+.nt-stat-light h3 { color: var(--nt-navy); font-size: clamp(2rem,4vw,3rem); font-weight: 700; margin-bottom: 4px; line-height: 1; }
+.nt-stat-light h3 span { color: var(--nt-orange); }
+.nt-stat-light p { color: var(--nt-gray); margin: 0; font-size: .93rem; }
+
+/* Checklist */
+.nt-check { list-style: none; padding: 0; margin: 0; }
+.nt-check li {
+  display: flex; align-items: flex-start; gap: 12px;
+  margin-bottom: 14px; color: var(--nt-gray); line-height: 1.6;
+}
+.nt-check li i { color: var(--nt-orange); margin-top: 4px; flex-shrink: 0; }
+.nt-check--light li { color: rgba(255,255,255,0.78); }
+
+/* Testimonial card */
+.nt-quote {
+  background: var(--nt-white);
+  border-radius: 14px;
+  padding: 38px 34px;
+  height: 100%;
+  border: 1px solid #e6eaf0;
+}
+.nt-quote__stars { color: #F5A623; margin-bottom: 16px; letter-spacing: 2px; }
+.nt-quote p { color: var(--nt-text); font-size: 1.02rem; line-height: 1.75; margin-bottom: 24px; }
+.nt-quote__author { display: flex; align-items: center; gap: 14px; }
+.nt-quote__avatar {
+  width: 46px; height: 46px; border-radius: 50%;
+  background: var(--nt-navy); color: var(--nt-white);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: .95rem; flex-shrink: 0;
+}
+.nt-quote__author h6 { margin: 0; color: var(--nt-navy); font-weight: 700; font-size: .95rem; }
+.nt-quote__author span { color: var(--nt-gray); font-size: .85rem; }
+
+/* Sticky sidebar card used on service detail pages */
+.nt-side-card {
+  background: var(--nt-gray-light);
+  border-radius: 12px;
+  padding: 30px 28px;
+  margin-bottom: 22px;
+}
+.nt-side-card--navy { background: var(--nt-navy); }
+.nt-side-card--navy h5, .nt-side-card--navy h4 { color: var(--nt-white); }
+.nt-side-card h5 { color: var(--nt-navy); font-weight: 700; margin-bottom: 16px; font-size: 1.05rem; }
+.nt-side-nav { list-style: none; padding: 0; margin: 0; }
+.nt-side-nav li { margin-bottom: 2px; }
+.nt-side-nav li a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 16px; border-radius: 8px;
+  background: var(--nt-white); color: var(--nt-navy);
+  text-decoration: none; font-size: .92rem; font-weight: 500;
+  transition: all .25s ease;
+}
+.nt-side-nav li a i { color: var(--nt-orange); font-size: .8rem; transition: transform .25s ease; }
+.nt-side-nav li a:hover { background: var(--nt-navy); color: var(--nt-white); }
+.nt-side-nav li a:hover i { color: var(--nt-orange); transform: translateX(3px); }
+.nt-side-nav li.is-active a { background: var(--nt-navy); color: var(--nt-white); }
+
+/* Highlight / offer box */
+.nt-highlight {
+  background: var(--nt-gray-light);
+  border-left: 4px solid var(--nt-orange);
+  border-radius: 10px;
+  padding: 28px 30px;
+}
+.nt-highlight h5 { color: var(--nt-navy); font-weight: 700; margin-bottom: 8px; }
+.nt-highlight p { color: var(--nt-gray); margin: 0; }
+
+/* Accordion (FAQ) — brand skin over bootstrap */
+.nt-accordion .accordion-item {
+  border: 1px solid #e6eaf0;
+  border-radius: 10px !important;
+  margin-bottom: 14px;
+  overflow: hidden;
+  background: var(--nt-white);
+}
+.nt-accordion .accordion-button {
+  font-weight: 600; color: var(--nt-navy);
+  background: var(--nt-white); box-shadow: none;
+  padding: 20px 24px; font-size: 1rem;
+}
+.nt-accordion .accordion-button:not(.collapsed) {
+  color: var(--nt-orange);
+  background: var(--nt-gray-light);
+}
+.nt-accordion .accordion-button:focus { box-shadow: none; border-color: transparent; }
+.nt-accordion .accordion-body { color: var(--nt-gray); padding: 4px 24px 22px; line-height: 1.75; }
+
+/* Logo strip / trust row */
+.nt-trust-row {
+  display: flex; flex-wrap: wrap; gap: 14px 34px;
+  align-items: center;
+}
+.nt-trust-row span {
+  display: inline-flex; align-items: center; gap: 9px;
+  color: rgba(255,255,255,0.8); font-size: .92rem; font-weight: 500;
+}
+.nt-trust-row i { color: var(--nt-orange); }
+
+/* Decorative budgeto shape overlay */
+.nt-shape {
+  position: absolute; pointer-events: none; opacity: .10; z-index: 1;
+}
+.nt-shape--tr { top: 40px; right: 40px; width: 150px; }
+.nt-shape--br { bottom: 30px; right: 6%; width: 190px; }
+
+/* Section padding helpers */
+.nt-sec    { padding: 100px 0; }
+.nt-sec-sm { padding: 70px 0; }
+@media (max-width: 767px) {
+  .nt-sec { padding: 64px 0; }
+  .nt-sec-sm { padding: 48px 0; }
+  .nt-icon-card { padding: 26px 22px; }
 }
 
 /* --- Misc --- */

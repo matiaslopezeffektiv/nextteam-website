@@ -2,135 +2,411 @@
 <html class="no-js" lang="sv">
 <head>
   <meta charset="utf-8">
-  <title>Pall- & Lagerförvaring — Next Team</title>
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Pall- &amp; Lagerförvaring — Next Team</title>
   <meta name="description" content="Säker och flexibel lagring av dina pallar och gods med full spårbarhet.">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="image/x-icon" href="../assets/img/logo/logo-color.png">
+
+  <!-- Fonts (budgeto's own type pairing; main.css ships a malformed @import so they are linked here) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=DM+Serif+Display:ital@0;1&amp;display=swap">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="../assets/css/bootstrap.css">
   <link rel="stylesheet" href="../assets/css/animate.css">
+  <link rel="stylesheet" href="../assets/css/swiper-bundle.css">
+  <link rel="stylesheet" href="../assets/css/magnific-popup.css">
   <link rel="stylesheet" href="../assets/css/font-awesome-pro.css">
   <link rel="stylesheet" href="../assets/css/spacing.css">
   <link rel="stylesheet" href="../assets/css/main.css">
   <link rel="stylesheet" href="../assets/css/custom.css">
-</head>
-<body class="tp-bg-common-white-2">
+</head><body class="tp-bg-common-white-2">
+
+  <!-- Preloader -->
   <div class="preloader"><div class="loading"></div></div>
-  <div class="back-to-top-wrapper"><button id="back_to_top" type="button" class="back-to-top-btn"><svg width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>
 
+  <!-- Back to top -->
+  <div class="back-to-top-wrapper">
+    <button id="back_to_top" type="button" class="back-to-top-btn">
+      <svg width="12" height="7" viewBox="0 0 12 7" fill="none"><path d="M11 6L6 1L1 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <!-- =============== OFFCANVAS (mobil meny) =============== -->
+  <div class="tpoffcanvas-area">
+    <div class="tpoffcanvas">
+      <div class="tpoffcanvas__close-btn">
+        <button class="close-btn" aria-label="Stäng meny"><i class="fal fa-times"></i></button>
+      </div>
+      <div class="tpoffcanvas__logo mb-30">
+        <a href="../index.html"><img src="../assets/img/logo/logo-color.png" alt="Next Team" style="height:46px;width:auto;"></a>
+      </div>
+      <div class="tp-offcanvas-menu mb-30">
+        <nav></nav>
+      </div>
+      <div class="tpoffcanvas__contact-info">
+        <ul>
+          <li><i class="fas fa-phone" style="color:#F47C20;margin-right:10px;"></i><a href="tel:+46700000000">+46 70 000 00 00</a></li>
+          <li class="mt-10"><i class="fas fa-envelope" style="color:#F47C20;margin-right:10px;"></i><a href="mailto:info@nextteam.se">info@nextteam.se</a></li>
+        </ul>
+      </div>
+      <div class="mt-30">
+        <a href="#" class="tp-btn hire-btn" style="padding:12px 26px;">Hyr personal</a>
+      </div>
+    </div>
+  </div>
+  <div class="body-overlay"></div>
+  <!-- =============== /OFFCANVAS =============== -->
+
+  <!-- =============== NAVBAR =============== -->
   <header class="tpheader tp-header-height" id="header-sticky">
-    <div class="container-fluid px-40"><div class="row align-items-center">
-      <div class="col-xl-2 col-lg-3 col-6"><div class="tplogo"><a href="../index.html"><img src="../assets/img/logo/logo-color.png" alt="Next Team" style="height:52px;width:auto;"></a></div></div>
-      <div class="col-xl-8 col-lg-7 d-none d-lg-block">
-        <nav class="main-menu tp-main-menu-content"><ul>
-          <li><a href="../index.html">Hem</a></li>
-          <li class="has-dropdown active"><a href="../tjanster.html">Tjänster</a><ul class="sub-menu"><li><a href="lagerlogistik.html">Lagerlogistik</a></li><li><a href="in-utleverans.html">In- &amp; Utleverans</a></li><li><a href="pallforvaring.html">Pallförvaring</a></li><li><a href="transport.html">Transport</a></li><li><a href="chauffoerer.html">Chaufförer</a></li><li><a href="hjullastare.html">Hjullastare</a></li><li><a href="industri-produktion.html">Industri &amp; Produktion</a></li><li><a href="flytt.html">Flytt</a></li><li><a href="bemanning.html">Bemanning vid arbetstoppar</a></li><li><a href="stad.html">Städ</a></li><li><a href="hemtjanst.html">Hemtjänst</a></li><li><a href="personlig-assistans.html">Personlig assistans</a></li></ul></li>
-          <li><a href="../om-oss.html">Om oss</a></li>
-          <li><a href="../kontakt.html">Kontakt</a></li>
-        </ul></nav>
+    <div class="container-fluid px-40">
+      <div class="row align-items-center">
+        <div class="col-xl-2 col-lg-3 col-6">
+          <div class="tplogo">
+            <a href="../index.html"><img src="../assets/img/logo/logo-color.png" alt="Next Team" style="height:52px;width:auto;"></a>
+          </div>
+        </div>
+        <div class="col-xl-8 col-lg-7 d-none d-lg-block">
+          <div class="tp-main-menu main-menu d-flex justify-content-center">
+            <nav class="tp-mobile-menu-active">
+              <ul>
+                <li><a href="../index.html">Hem</a></li>
+                <li class="has-dropdown active"><a href="../tjanster.html">Tjänster</a>
+                  <ul class="submenu tp-submenu"><li><a href="lagerlogistik.html">Lagerlogistik</a></li><li><a href="in-utleverans.html">In- &amp; Utleverans</a></li><li><a href="pallforvaring.html">Pallförvaring</a></li><li><a href="transport.html">Transport</a></li><li><a href="chauffoerer.html">Chaufförer</a></li><li><a href="hjullastare.html">Hjullastare</a></li><li><a href="industri-produktion.html">Industri &amp; Produktion</a></li><li><a href="flytt.html">Flytt</a></li><li><a href="bemanning.html">Bemanning vid arbetstoppar</a></li><li><a href="stad.html">Städ</a></li><li><a href="hemtjanst.html">Hemtjänst</a></li><li><a href="personlig-assistans.html">Personlig assistans</a></li></ul>
+                </li>
+                <li><a href="../om-oss.html">Om oss</a></li>
+                <li><a href="../kontakt.html">Kontakt</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-6 d-flex justify-content-end align-items-center gap-3">
+          <a href="#" class="tp-btn hire-btn d-none d-lg-inline-flex">Hyr personal</a>
+          <button class="tp-offcanvas-open-btn tp-menu-bar d-lg-none" aria-label="Öppna meny">
+            <i class="fas fa-bars" style="font-size:1.4rem;color:#1C2E4A;"></i>
+          </button>
+        </div>
       </div>
-      <div class="col-xl-2 col-lg-2 col-6 d-flex justify-content-end">
-        <a href="#" class="tp-btn hire-btn d-none d-lg-inline-flex">Hyr personal</a>
-        <button class="tp-offcanvas-open-btn d-lg-none"><i class="fas fa-bars" style="font-size:1.4rem;color:#1C2E4A;"></i></button>
-      </div>
-    </div></div>
+    </div>
   </header>
+  <!-- =============== /NAVBAR =============== -->
 
-  <section class="tpbreadcrumb pt-150 pb-80" style="background-color:#1C2E4A;">
-    <div class="container"><div class="row"><div class="col-12 text-center">
-      <div style="margin-bottom:16px;"><i class="fas fa-pallet" style="font-size:3rem;color:#F47C20;"></i></div>
-      <h1 class="tpbreadcrumb__title mb-15">Pall- & Lagerförvaring</h1>
-      <nav><ul style="list-style:none;padding:0;display:flex;justify-content:center;gap:8px;"><li><a href="../index.html" style="color:rgba(255,255,255,0.7);">Hem</a></li><li style="color:rgba(255,255,255,0.5);">/</li><li><a href="../tjanster.html" style="color:rgba(255,255,255,0.7);">Tjänster</a></li><li style="color:rgba(255,255,255,0.5);">/</li><li style="color:#F47C20;">Pall- & Lagerförvaring</li></ul></nav>
-    </div></div></div>
-  </section>
+  <!-- =============== BREADCRUMB =============== -->
+  <div class="tp-breadcrumb-area tp-breadcrumb-spacing bg-position nt-dark-band pt-180 pb-90" data-background="../assets/img/breadcrumb/breadcrumb-bg.jpg">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 col-lg-9">
+          <div class="tp-breadcrumb-content">
+            <h1 class="tp-breadcrumb-title fw-600 fs-60 fs-xs-40 ls-m-3 tp-text-common-white lh-1 mb-20">Pall- & Lagerförvaring</h1>
+            <div class="tp-breadcrumb-dvdr"><ul><li><a href="../index.html">Hem</a></li><li class="dvdr">/</li><li><a href="../tjanster.html">Tjänster</a></li><li class="dvdr">/</li><li>Pall- & Lagerförvaring</li></ul></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =============== /BREADCRUMB =============== -->
 
-  <section class="pt-100 pb-80">
+  <!-- =============== TJÄNSTEBILD =============== -->
+  <div class="tp-service-details-thumb pt-80" style="background:var(--nt-white);">
+    <div class="container">
+      <div class="nt-media wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s" style="max-height:360px;">
+        <img src="../assets/img/service/service-hero.jpg" alt="Pall- &amp; Lagerförvaring">
+      </div>
+    </div>
+  </div>
+
+  <!-- =============== INNEHÅLL =============== -->
+  <div class="tp-service-details-area pt-70 pb-120" style="background:var(--nt-white);">
     <div class="container">
       <div class="row g-5">
+
         <div class="col-lg-8">
-          <h2 class="tp-section-title mb-20">Pall- & Lagerförvaring</h2>
-          <p style="color:#6c757d;line-height:1.8;margin-bottom:24px;">Behöver du flexibel förvaring av gods och pallar? Vi erbjuder säker lagerförvaring med full spårbarhet. Vår personal hanterar in- och utflöden noggrant och ser till att ditt gods alltid finns tillgängligt när du behöver det.</p>
-          <p style="color:#6c757d;line-height:1.8;margin-bottom:36px;">All vår personal inom Pall- & Lagerförvaring är fullt försäkrad, noggrant utvalda och har dokumenterad erfarenhet. Vi kan förstärka ditt team med kort varsel — oavsett om det gäller en dag eller ett längre uppdrag.</p>
+          <span class="nt-eyebrow">Tjänst</span>
+          <h2 class="mb-25 fs-xl-40 fs-sm-36">Pall- & Lagerförvaring</h2>
+          <p class="mb-25" style="color:var(--nt-gray);line-height:1.85;font-size:1.02rem;">Behöver du flexibel förvaring av gods och pallar? Vi erbjuder säker lagerförvaring med full spårbarhet. Vår personal hanterar in- och utflöden noggrant och ser till att ditt gods alltid finns tillgängligt när du behöver det.</p><p class="mb-25" style="color:var(--nt-gray);line-height:1.85;font-size:1.02rem;">All vår personal inom Pall- & Lagerförvaring är fullt försäkrad, noggrant utvalda och har dokumenterad erfarenhet. Vi kan förstärka ditt team med kort varsel — oavsett om det gäller en dag eller ett längre uppdrag.</p>
 
-          <h4 style="color:#1C2E4A;font-weight:700;margin-bottom:20px;">Vad ingår i tjänsten?</h4>
-          <ul style="list-style:none;padding:0;">
-              <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;"><i class="fas fa-check-circle" style="color:#F47C20;margin-top:3px;flex-shrink:0;"></i><span style="color:#6c757d;">Inlagring och utplockning av pallar</span></li>              <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;"><i class="fas fa-check-circle" style="color:#F47C20;margin-top:3px;flex-shrink:0;"></i><span style="color:#6c757d;">Inventering och kontroll</span></li>              <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;"><i class="fas fa-check-circle" style="color:#F47C20;margin-top:3px;flex-shrink:0;"></i><span style="color:#6c757d;">Märkning och spårbarhet</span></li>              <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;"><i class="fas fa-check-circle" style="color:#F47C20;margin-top:3px;flex-shrink:0;"></i><span style="color:#6c757d;">Flexibel lagerhyra efter behov</span></li>              <li style="display:flex;align-items:flex-start;gap:12px;margin-bottom:14px;"><i class="fas fa-check-circle" style="color:#F47C20;margin-top:3px;flex-shrink:0;"></i><span style="color:#6c757d;">Rapportering och lagerstatus</span></li>
-          </ul>
-
-          <div style="background:#F5F6F8;border-radius:10px;padding:30px;margin-top:36px;border-left:4px solid #F47C20;">
-            <h5 style="color:#1C2E4A;font-weight:700;margin-bottom:8px;">Ny kund? 30% rabatt!</h5>
-            <p style="color:#6c757d;margin:0;">Testa Next Team riskfritt — 30% rabatt på dina första 20 timmar. Nämn erbjudandet när du kontaktar oss.</p>
+          <div class="row g-4 mt-10 mb-45">
+            <div class="col-md-6">
+              <div class="nt-highlight h-100" style="background:var(--nt-gray-light);border-left-color:var(--nt-orange);">
+                <h5><i class="fas fa-shield-check" style="color:#F47C20;margin-right:8px;"></i>Fullt försäkrad personal</h5>
+                <p>Samtliga medarbetare är försäkrade och bakgrundskontrollerade under hela uppdraget.</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="nt-highlight h-100" style="background:var(--nt-gray-light);border-left-color:var(--nt-navy);">
+                <h5><i class="fas fa-bolt" style="color:#F47C20;margin-right:8px;"></i>På plats med kort varsel</h5>
+                <p>Vi bemannar från en enskild dag till långa uppdrag — utan bindningstid.</p>
+              </div>
+            </div>
           </div>
 
-          <div class="d-flex flex-wrap gap-3 mt-36">
-            <a href="#" class="tp-btn hire-btn" style="padding:14px 32px;">Hyr personal nu</a>
-            <a href="../kontakt.html" class="tp-btn-border" style="padding:14px 32px;border:2px solid #1C2E4A;color:#1C2E4A;border-radius:4px;text-decoration:none;font-weight:600;">Kontakta oss direkt</a>
+          <h4 style="color:var(--nt-navy);font-weight:700;margin-bottom:22px;">Vad ingår i tjänsten?</h4>
+          <ul class="nt-check mb-45"><li><i class="fas fa-check-circle"></i><span>Inlagring och utplockning av pallar</span></li><li><i class="fas fa-check-circle"></i><span>Inventering och kontroll</span></li><li><i class="fas fa-check-circle"></i><span>Märkning och spårbarhet</span></li><li><i class="fas fa-check-circle"></i><span>Flexibel lagerhyra efter behov</span></li><li><i class="fas fa-check-circle"></i><span>Rapportering och lagerstatus</span></li></ul>
+
+          <div class="nt-highlight mb-45">
+            <h5>Ny kund? 30% rabatt!</h5>
+            <p>Testa Next Team riskfritt — 30% rabatt på dina första 20 timmar. Nämn erbjudandet när du kontaktar oss.</p>
+          </div>
+
+          <div class="d-flex flex-wrap gap-3">
+            <a href="#" class="tp-btn-xl hire-btn d-inline-block lh-0 tp-round-26 fs-16 tp-bg-theme-primary ls-0 tp-btn-switch-animation tp-text-common-white fw-500">
+              <span class="d-flex align-items-center justify-content-center">
+                <span class="btn-text">Hyr personal nu</span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+              </span>
+            </a>
+            <a href="../kontakt.html" class="tp-btn-xl d-inline-block lh-0 tp-round-26 fs-16 border-full-1 ls-0 tp-btn-switch-animation fw-500">
+              <span class="d-flex align-items-center justify-content-center">
+                <span class="btn-text">Kontakta oss direkt</span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+              </span>
+            </a>
           </div>
         </div>
 
         <div class="col-lg-4">
-          <div style="background:#1C2E4A;border-radius:10px;padding:36px;margin-bottom:20px;">
-            <h4 style="color:white;font-weight:700;margin-bottom:24px;">Kontakta oss direkt</h4>
-            <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
-              <i class="fas fa-phone" style="color:#F47C20;font-size:1.2rem;"></i>
-              <div><p style="color:rgba(255,255,255,0.65);font-size:0.8rem;margin:0;">Ring oss</p><a href="tel:+46700000000" style="color:white;font-weight:700;font-size:1.1rem;text-decoration:none;">+46 70 000 00 00</a></div>
+          <div class="nt-side-card nt-side-card--navy bg-position" data-background="../assets/img/service/service-panel.jpg" style="background-size:cover;">
+            <h4 style="color:#fff;font-weight:700;margin-bottom:24px;">Kontakta oss direkt</h4>
+            <div style="display:flex;align-items:center;gap:14px;margin-bottom:18px;">
+              <span style="width:44px;height:44px;border-radius:12px;background:rgba(244,124,32,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-phone" style="color:#F47C20;"></i></span>
+              <div>
+                <p style="color:rgba(255,255,255,.6);font-size:.8rem;margin:0;">Ring oss</p>
+                <a href="tel:+46700000000" style="color:#fff;font-weight:700;font-size:1.05rem;text-decoration:none;">+46 70 000 00 00</a>
+              </div>
             </div>
-            <div style="display:flex;align-items:center;gap:12px;">
-              <i class="fas fa-envelope" style="color:#F47C20;font-size:1.2rem;"></i>
-              <div><p style="color:rgba(255,255,255,0.65);font-size:0.8rem;margin:0;">E-post</p><a href="mailto:info@nextteam.se" style="color:white;font-weight:700;text-decoration:none;">info@nextteam.se</a></div>
+            <div style="display:flex;align-items:center;gap:14px;">
+              <span style="width:44px;height:44px;border-radius:12px;background:rgba(244,124,32,.18);display:flex;align-items:center;justify-content:center;flex-shrink:0;"><i class="fas fa-envelope" style="color:#F47C20;"></i></span>
+              <div>
+                <p style="color:rgba(255,255,255,.6);font-size:.8rem;margin:0;">E-post</p>
+                <a href="mailto:info@nextteam.se" style="color:#fff;font-weight:700;text-decoration:none;">info@nextteam.se</a>
+              </div>
             </div>
           </div>
 
-          <div style="background:#F5F6F8;border-radius:10px;padding:30px;margin-bottom:20px;">
-            <h5 style="color:#1C2E4A;font-weight:700;margin-bottom:16px;">Varför Next Team?</h5>
-            <ul style="list-style:none;padding:0;margin:0;">
-              <li style="display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#6c757d;font-size:0.9rem;"><i class="fas fa-check" style="color:#F47C20;"></i>Försäkrade medarbetare</li>
-              <li style="display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#6c757d;font-size:0.9rem;"><i class="fas fa-check" style="color:#F47C20;"></i>Certifierade och utbildade</li>
-              <li style="display:flex;align-items:center;gap:10px;margin-bottom:10px;color:#6c757d;font-size:0.9rem;"><i class="fas fa-check" style="color:#F47C20;"></i>Snabb leverans</li>
-              <li style="display:flex;align-items:center;gap:10px;color:#6c757d;font-size:0.9rem;"><i class="fas fa-check" style="color:#F47C20;"></i>Flexibel bemanning</li>
+          <div class="nt-side-card">
+            <h5>Varför Next Team?</h5>
+            <ul class="nt-check" style="margin:0;"><li><i class="fas fa-check"></i><span>Försäkrade medarbetare</span></li><li><i class="fas fa-check"></i><span>Certifierade och utbildade</span></li><li><i class="fas fa-check"></i><span>Snabb leverans</span></li><li><i class="fas fa-check"></i><span>Flexibel bemanning</span></li></ul>
+          </div>
+
+          <div class="nt-side-card">
+            <h5>Alla tjänster</h5>
+            <ul class="nt-side-nav"><li><a href="lagerlogistik.html">Lagerlogistik <i class="fas fa-arrow-right"></i></a></li><li><a href="in-utleverans.html">In- &amp; Utleverans <i class="fas fa-arrow-right"></i></a></li><li class="is-active"><a href="pallforvaring.html">Pall- &amp; Lagerförvaring <i class="fas fa-arrow-right"></i></a></li><li><a href="transport.html">Transport <i class="fas fa-arrow-right"></i></a></li><li><a href="chauffoerer.html">Chaufförer <i class="fas fa-arrow-right"></i></a></li><li><a href="hjullastare.html">Hjullastare <i class="fas fa-arrow-right"></i></a></li><li><a href="industri-produktion.html">Industri &amp; Produktion <i class="fas fa-arrow-right"></i></a></li><li><a href="flytt.html">Flytt <i class="fas fa-arrow-right"></i></a></li><li><a href="bemanning.html">Bemanning vid arbetstoppar <i class="fas fa-arrow-right"></i></a></li><li><a href="stad.html">Städ <i class="fas fa-arrow-right"></i></a></li><li><a href="hemtjanst.html">Hemtjänst <i class="fas fa-arrow-right"></i></a></li><li><a href="personlig-assistans.html">Personlig assistans <i class="fas fa-arrow-right"></i></a></li></ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- =============== /INNEHÅLL =============== -->
+
+  <!-- =============== RELATERADE TJÄNSTER =============== -->
+  <div class="tp-service-area pt-110 pb-120" style="background:var(--nt-gray-light);">
+    <div class="container">
+      <div class="row justify-content-center mb-55">
+        <div class="col-xl-7 text-center">
+          <span class="nt-eyebrow">Fler tjänster</span>
+          <h2 class="fs-xl-40 fs-sm-36 wow img-custom-anim-top" data-wow-duration="1.5s" data-wow-delay="0.2s">Vi bemannar mer än så här</h2>
+        </div>
+      </div>
+      <div class="row g-4">
+        <div class="col-xl-4 col-md-6">
+          <div class="nt-icon-card wow fadeInUp" data-wow-delay=".1s" data-wow-duration=".9s">
+            <div class="nt-icon-card__icon"><i class="fas fa-truck"></i></div>
+            <h4><a href="transport.html">Transport</a></h4>
+            <p>Pålitliga transporter med erfarna förare och rätt fordon för uppdraget.</p>
+            <a class="nt-icon-card__link" href="transport.html">Läs mer <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="nt-icon-card wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".9s">
+            <div class="nt-icon-card__icon"><i class="fas fa-id-card"></i></div>
+            <h4><a href="chauffoerer.html">Chaufförer</a></h4>
+            <p>Certifierade och utbildade lastbilschaufförer med körkort och erfarenhet.</p>
+            <a class="nt-icon-card__link" href="chauffoerer.html">Läs mer <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="col-xl-4 col-md-6">
+          <div class="nt-icon-card wow fadeInUp" data-wow-delay=".3s" data-wow-duration=".9s">
+            <div class="nt-icon-card__icon"><i class="fas fa-tractor"></i></div>
+            <h4><a href="hjullastare.html">Hjullastare</a></h4>
+            <p>Operatörer för hjullastare och tyngre maskiner med rätt certifikat.</p>
+            <a class="nt-icon-card__link" href="hjullastare.html">Läs mer <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =============== /RELATERADE TJÄNSTER =============== -->
+
+  <!-- =============== SIFFROR =============== -->
+  <div class="tp-counter-area pt-90 pb-60" style="background:var(--nt-gray-light);">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="tp-counter-wrap d-flex align-items-center mb-30 wow fadeInUp" data-wow-delay=".1s" data-wow-duration=".9s">
+            <span class="mr-25"><svg width="62" height="62" viewBox="0 0 72 74" fill="none"><rect x="14.7" y="1" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="28.4" y="11.9" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="42.1" y="16.5" width="20.8" height="16.2" stroke="#F47C20" stroke-width="2"/><rect x="49.4" y="26.5" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="37.5" y="32.9" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="22.9" y="39.3" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="11.9" y="45.7" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/><rect x="1" y="52.1" width="20.8" height="20.8" stroke="#F47C20" stroke-width="2"/></svg></span>
+            <div class="nt-stat-light">
+              <h3><span class="purecounter" data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="2">500</span>+</h3>
+              <p>Slutförda uppdrag</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="tp-counter-wrap d-flex align-items-center mb-30 wow fadeInUp" data-wow-delay=".2s" data-wow-duration=".9s">
+            <span class="mr-25"><svg width="62" height="62" viewBox="0 0 74 74" fill="none"><circle cx="37" cy="37" r="36" stroke="#F47C20" stroke-width="2"/><circle cx="37" cy="32.3" r="31.3" stroke="#F47C20" stroke-width="2"/><circle cx="45.3" cy="37" r="26.7" stroke="#F47C20" stroke-width="2"/></svg></span>
+            <div class="nt-stat-light">
+              <h3><span class="purecounter" data-purecounter-start="0" data-purecounter-end="12" data-purecounter-duration="2">12</span></h3>
+              <p>Tjänsteområden</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="tp-counter-wrap d-flex align-items-center mb-30 wow fadeInUp" data-wow-delay=".3s" data-wow-duration=".9s">
+            <span class="mr-25"><svg width="64" height="62" viewBox="0 0 80 78" fill="none"><path d="M78.5 28.5V14.5L42.5 2L4 15.5V39L42.5 51.5L78.5 39V62L42.5 76L4 62L22.5 58.5" stroke="#F47C20" stroke-width="2"/><path d="M42.85 75.53V22.35" stroke="#F47C20" stroke-width="2"/><path d="M49.25 16.8C49.25 20.33 46.38 23.2 42.85 23.2C39.32 23.2 36.45 20.33 36.45 16.8C36.45 13.27 39.32 10.4 42.85 10.4C46.38 10.4 49.25 13.27 49.25 16.8Z" stroke="#F47C20" stroke-width="2"/></svg></span>
+            <div class="nt-stat-light">
+              <h3><span class="purecounter" data-purecounter-start="0" data-purecounter-end="98" data-purecounter-duration="2">98</span>%</h3>
+              <p>Nöjda kunder</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-6 col-md-6">
+          <div class="tp-counter-wrap d-flex align-items-center mb-30 wow fadeInUp" data-wow-delay=".4s" data-wow-duration=".9s">
+            <span class="mr-25"><svg width="62" height="62" viewBox="0 0 75 74" fill="none"><path d="M54.5 27.75C54.5 42.52 42.52 54.5 27.75 54.5C12.98 54.5 1 42.52 1 27.75C1 12.98 12.98 1 27.75 1C42.52 1 54.5 12.98 54.5 27.75Z" stroke="#F47C20" stroke-width="2"/><path d="M73.92 46.25C73.92 61.02 61.95 73 47.17 73C32.4 73 20.42 61.02 20.42 46.25C20.42 31.48 32.4 19.5 47.17 19.5C61.95 19.5 73.92 31.48 73.92 46.25Z" stroke="#F47C20" stroke-width="2"/><path d="M21.74 40.24H45.32L36.54 33.76" stroke="#F47C20" stroke-width="2"/></svg></span>
+            <div class="nt-stat-light">
+              <h3><span class="purecounter" data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="2">24</span>h</h3>
+              <p>Svarstid på förfrågningar</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =============== /SIFFROR =============== -->
+
+  <!-- =============== CTA =============== -->
+  <div class="tp-cta-area bg-position nt-dark-band pt-120 pb-120" data-background="../assets/img/cta/cta-bg.jpg">
+    <img class="nt-shape nt-shape--br d-none d-lg-block" src="../assets/img/shape/box-outline.png" alt="">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-8 col-lg-10">
+          <span class="nt-eyebrow nt-eyebrow-light">Redo att börja?</span>
+          <h2 class="mb-15 fs-xl-40 fs-sm-36 tp-text-common-white wow img-custom-anim-left" data-wow-duration="1.5s" data-wow-delay="0.2s">Behöver du Pall- & Lagerförvaring?</h2>
+          <p class="mb-40" style="color:rgba(255,255,255,0.78);font-size:1.05rem;max-width:620px;">Kontakta oss idag — snabbt svar, inga bindningstider.</p>
+          <div class="d-flex flex-wrap align-items-center gap-4">
+            <a href="#" class="tp-btn-xl hire-btn d-inline-block lh-0 tp-round-26 fs-16 tp-bg-theme-primary ls-0 tp-btn-switch-animation tp-text-common-white fw-500">
+              <span class="d-flex align-items-center justify-content-center">
+                <span class="btn-text">Hyr personal från oss</span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+                <span class="btn-icon"><i class="fa-sharp fa-regular fa-arrow-right"></i></span>
+              </span>
+            </a>
+            <a href="tel:+46700000000" class="d-inline-flex align-items-center gap-3" style="text-decoration:none;">
+              <span style="width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,0.12);display:flex;align-items:center;justify-content:center;">
+                <i class="fas fa-phone" style="color:#F47C20;"></i>
+              </span>
+              <span>
+                <span style="display:block;color:rgba(255,255,255,0.6);font-size:.8rem;">Ring oss direkt</span>
+                <span style="display:block;color:#fff;font-weight:700;font-size:1.05rem;">+46 70 000 00 00</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- =============== /CTA =============== -->
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="tpfooter pt-80 pb-0">
+    <div class="container">
+      <div class="row g-5 pb-60">
+        <div class="col-xl-4 col-lg-4 col-md-6">
+          <div class="tpfooter-widget mb-40">
+            <div class="tpfooter__logo mb-25">
+              <a href="../index.html"><img src="../assets/img/logo/logo-white.png" alt="Next Team" style="height:50px;width:auto;"></a>
+            </div>
+            <p style="color:rgba(255,255,255,0.65);line-height:1.7;">Din partner inom lagerlogistik, transport och bemanning.</p>
+          </div>
+        </div>
+        <div class="col-xl-2 col-lg-2 col-md-6">
+          <div class="tpfooter-widget mb-40">
+            <h4 class="tpfooter-widget__title mb-25">Snabblänkar</h4>
+            <ul class="tpfooter__link">
+              <li><a href="../index.html">Hem</a></li>
+              <li><a href="../tjanster.html">Tjänster</a></li>
+              <li><a href="../om-oss.html">Om oss</a></li>
+              <li><a href="../kontakt.html">Kontakt</a></li>
             </ul>
           </div>
-
-          <div style="background:#F5F6F8;border-radius:10px;padding:24px;">
-            <h5 style="color:#1C2E4A;font-weight:700;margin-bottom:14px;">Fler tjänster</h5>
-            <ul style="list-style:none;padding:0;margin:0;">
-              <li style="margin-bottom:8px;"><a href="lagerlogistik.html" style="color:#1C2E4A;text-decoration:none;font-size:0.9rem;"><i class="fas fa-arrow-right" style="color:#F47C20;margin-right:8px;font-size:0.75rem;"></i>Lagerlogistik</a></li>
-              <li style="margin-bottom:8px;"><a href="transport.html" style="color:#1C2E4A;text-decoration:none;font-size:0.9rem;"><i class="fas fa-arrow-right" style="color:#F47C20;margin-right:8px;font-size:0.75rem;"></i>Transport</a></li>
-              <li style="margin-bottom:8px;"><a href="chauffoerer.html" style="color:#1C2E4A;text-decoration:none;font-size:0.9rem;"><i class="fas fa-arrow-right" style="color:#F47C20;margin-right:8px;font-size:0.75rem;"></i>Chaufförer</a></li>
-              <li style="margin-bottom:8px;"><a href="in-utleverans.html" style="color:#1C2E4A;text-decoration:none;font-size:0.9rem;"><i class="fas fa-arrow-right" style="color:#F47C20;margin-right:8px;font-size:0.75rem;"></i>In- &amp; Utleverans</a></li>
-              <li><a href="../tjanster.html" style="color:#F47C20;text-decoration:none;font-size:0.9rem;font-weight:600;">Alla tjänster →</a></li>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="tpfooter-widget mb-40">
+            <h4 class="tpfooter-widget__title mb-25">Våra tjänster</h4>
+            <ul class="tpfooter__link"><li><a href="lagerlogistik.html">Lagerlogistik</a></li><li><a href="in-utleverans.html">In- &amp; Utleverans</a></li><li><a href="pallforvaring.html">Pallförvaring</a></li><li><a href="transport.html">Transport</a></li><li><a href="chauffoerer.html">Chaufförer</a></li></ul>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-6">
+          <div class="tpfooter-widget mb-40">
+            <h4 class="tpfooter-widget__title mb-25">Kontakt</h4>
+            <ul class="tpfooter__link">
+              <li><i class="fas fa-phone" style="color:#F47C20;margin-right:8px;"></i><a href="tel:+46700000000">+46 70 000 00 00</a></li>
+              <li><i class="fas fa-envelope" style="color:#F47C20;margin-right:8px;"></i><a href="mailto:info@nextteam.se">info@nextteam.se</a></li>
+              
             </ul>
           </div>
         </div>
       </div>
     </div>
-  </section>
-
-  <section class="nt-cta-section">
-    <div class="container">
-      <h2>Behöver du Pall- & Lagerförvaring?</h2>
-      <p>Kontakta oss idag — snabbt svar, inga bindningstider.</p>
-      <div class="d-flex flex-wrap justify-content-center gap-3">
-        <a href="#" class="tp-btn hire-btn" style="padding:14px 36px;">Hyr personal från oss</a>
-        <a href="../kontakt.html" class="tp-btn" style="padding:14px 36px;background:transparent;border:2px solid white;color:white;border-radius:4px;text-decoration:none;font-weight:600;">Kontakta oss direkt</a>
+    <div class="tpfooter__bottom">
+      <div class="container">
+        <div class="py-20 text-center"><p style="margin:0;">&copy; 2025 Next Team. Alla rättigheter förbehållna.</p></div>
       </div>
     </div>
-  </section>
-
-  <footer class="tpfooter pt-80 pb-0">
-    <div class="container"><div class="row g-5 pb-60">
-      <div class="col-xl-4"><div class="tpfooter-widget"><div class="tpfooter__logo mb-25"><a href="../index.html"><img src="../assets/img/logo/logo-white.png" alt="Next Team" style="height:50px;width:auto;"></a></div><p style="color:rgba(255,255,255,0.65);">Din partner inom lagerlogistik, transport och bemanning.</p></div></div>
-      <div class="col-xl-2"><div class="tpfooter-widget"><h4 class="tpfooter-widget__title mb-25">Snabblänkar</h4><ul class="tpfooter__link"><li><a href="../index.html">Hem</a></li><li><a href="../tjanster.html">Tjänster</a></li><li><a href="../om-oss.html">Om oss</a></li><li><a href="../kontakt.html">Kontakt</a></li></ul></div></div>
-      <div class="col-xl-3"><div class="tpfooter-widget"><h4 class="tpfooter-widget__title mb-25">Tjänster</h4><ul class="tpfooter__link"><li><a href="lagerlogistik.html">Lagerlogistik</a></li><li><a href="transport.html">Transport</a></li><li><a href="chauffoerer.html">Chaufförer</a></li><li><a href="in-utleverans.html">In- &amp; Utleverans</a></li><li><a href="pallforvaring.html">Pallförvaring</a></li></ul></div></div>
-      <div class="col-xl-3"><div class="tpfooter-widget"><h4 class="tpfooter-widget__title mb-25">Kontakt</h4><ul class="tpfooter__link"><li><i class="fas fa-phone" style="color:#F47C20;margin-right:8px;"></i><a href="tel:+46700000000">+46 70 000 00 00</a></li><li><i class="fas fa-envelope" style="color:#F47C20;margin-right:8px;"></i><a href="mailto:info@nextteam.se">info@nextteam.se</a></li></ul></div></div>
-    </div></div>
-    <div class="tpfooter__bottom"><div class="container"><div class="py-20 text-center"><p style="margin:0;">&copy; 2025 Next Team. Alla rättigheter förbehållna.</p></div></div></div>
   </footer>
+  <!-- =============== /FOOTER =============== -->
 
-  <div class="nt-modal-overlay" id="nt-hire-modal"><div class="nt-modal"><button class="nt-modal__close">&times;</button><h3>Hyr personal från oss</h3><p class="subtitle">Vi återkommer inom 1–2 timmar.</p><form id="hire-form"><div class="row-2col"><div class="form-group"><label>Namn *</label><input type="text" name="name" required></div><div class="form-group"><label>Företag *</label><input type="text" name="company" required></div></div><div class="row-2col"><div class="form-group"><label>E-post *</label><input type="email" name="email" required></div><div class="form-group"><label>Telefon</label><input type="tel" name="phone"></div></div><div class="form-group"><label>Tjänst *</label><select name="service" required><option value="">Pall- & Lagerförvaring</option><option>Lagerlogistik</option><option>Transport</option><option>Chaufförer</option><option>In- &amp; Utleverans</option><option>Pallförvaring</option><option>Annan tjänst</option></select></div><div class="form-group"><label>Beskriv behovet</label><textarea name="message"></textarea></div><button type="submit" class="nt-submit-btn">Skicka förfrågan &rarr;</button></form></div></div>
+  <!-- =============== HIRE MODAL =============== -->
+  <div class="nt-modal-overlay" id="nt-hire-modal">
+    <div class="nt-modal">
+      <button class="nt-modal__close" aria-label="Stäng">&times;</button>
+      <h3>Hyr personal från oss</h3>
+      <p class="subtitle">Fyll i formuläret så återkommer vi inom 1–2 timmar med ett förslag.</p>
+      <form id="hire-form">
+        <div class="row-2col">
+          <div class="form-group"><label>Förnamn &amp; efternamn *</label><input type="text" name="name" required placeholder="Anna Svensson"></div>
+          <div class="form-group"><label>Företag *</label><input type="text" name="company" required placeholder="Ditt AB"></div>
+        </div>
+        <div class="row-2col">
+          <div class="form-group"><label>E-postadress *</label><input type="email" name="email" required placeholder="anna@foretagetab.se"></div>
+          <div class="form-group"><label>Telefon</label><input type="tel" name="phone" placeholder="+46 70 000 00 00"></div>
+        </div>
+        <div class="form-group">
+          <label>Vilken tjänst söker ni? *</label>
+          <select name="service" required><option value="">— Välj tjänst —</option><option>Lagerlogistik</option><option>In- &amp; Utleverans</option><option selected>Pall- &amp; Lagerförvaring</option><option>Transport</option><option>Chaufförer</option><option>Hjullastare</option><option>Industri &amp; Produktion</option><option>Flytt</option><option>Bemanning vid arbetstoppar</option><option>Städ</option><option>Hemtjänst</option><option>Personlig assistans</option></select>
+        </div>
+        <div class="form-group"><label>Startdatum (ungefär)</label><input type="date" name="startdate"></div>
+        <div class="form-group"><label>Beskriv ditt behov</label><textarea name="message" placeholder="Antal personer, tider, arbetsuppgifter..."></textarea></div>
+        <button type="submit" class="nt-submit-btn">Skicka förfrågan &rarr;</button>
+      </form>
+    </div>
+  </div>
+  <!-- =============== /HIRE MODAL =============== -->
 
+  <!-- JS -->
   <script src="../assets/js/vendor/jquery.js"></script>
   <script src="../assets/js/bootstrap-bundle.js"></script>
+  <script src="../assets/js/nice-select.js"></script>
   <script src="../assets/js/wow.js"></script>
+  <script src="../assets/js/swiper-bundle.js"></script>
+  <script src="../assets/js/purecounter.js"></script>
+  <script src="../assets/js/magnific-popup.js"></script>
+  <script src="../assets/js/jarallax.js"></script>
+  <script src="../assets/js/slider-init.js"></script>
   <script src="../assets/js/main.js"></script>
   <script src="../assets/js/modal.js"></script>
 </body>
