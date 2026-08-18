@@ -1,0 +1,9 @@
+{
+  "name": "nextteam-website",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Next Team — lagerlogistik & bemanning",
+  "dependencies": {
+    "resend": "latest"
+  }
+}

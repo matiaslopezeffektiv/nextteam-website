@@ -1,6 +1,7 @@
 .vercel
 .env*
 .DS_Store
+node_modules
 
 # Purchased budgeto template package — reference only, never deploy/commit
 /budgeto/

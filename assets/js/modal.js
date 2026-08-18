@@ -38,20 +38,38 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.style.overflow = '';
   }
 
-  // Formulär submit
+  // Formulär submit — skickas via /api/contact (Resend)
   const form = overlay.querySelector('#hire-form');
   if (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       const submitBtn = form.querySelector('.nt-submit-btn');
+      const originalBtnText = submitBtn.textContent;
       submitBtn.textContent = 'Skickar...';
       submitBtn.disabled = true;
 
-      // TODO: Koppla till Formspree, Netlify Forms eller egen backend
-      // Formspree exempel: action="https://formspree.io/f/DITT_ID" method="POST"
-      setTimeout(function () {
-        form.innerHTML = '<div style="text-align:center;padding:40px 0"><i class="fas fa-check-circle" style="font-size:3rem;color:#F47C20;margin-bottom:16px;display:block"></i><h4 style="color:#1C2E4A;font-weight:700">Tack för din förfrågan!</h4><p style="color:#6c757d">Vi återkommer inom 1–2 timmar.</p></div>';
-      }, 1000);
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.type = 'hire';
+
+      fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      })
+        .then(function (res) {
+          return res.json().then(function (body) {
+            if (!res.ok) throw new Error(body.error || 'Något gick fel.');
+            return body;
+          });
+        })
+        .then(function () {
+          form.innerHTML = '<div style="text-align:center;padding:40px 0"><i class="fas fa-check-circle" style="font-size:3rem;color:#F47C20;margin-bottom:16px;display:block"></i><h4 style="color:#1C2E4A;font-weight:700">Tack för din förfrågan!</h4><p style="color:#6c757d">Vi återkommer inom 1–2 timmar.</p></div>';
+        })
+        .catch(function (err) {
+          submitBtn.textContent = originalBtnText;
+          submitBtn.disabled = false;
+          alert(err.message || 'Kunde inte skicka förfrågan. Försök igen eller ring oss direkt.');
+        });
     });
   }
 
