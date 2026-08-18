@@ -96,10 +96,9 @@
 
   <!-- =============== HERO =============== -->
   <section class="nt-hero-video">
-    <!-- Kundens video läggs in här; tills dess visas hero-bilden nedan -->
-    <video autoplay muted loop playsinline poster="assets/img/industrimiljo.jpeg">
-      <!-- <source src="assets/img/hero/hero-video.mp4" type="video/mp4"> -->
-      <!-- <source src="assets/img/hero/hero-video.webm" type="video/webm"> -->
+    <!-- Videon spelas upp först när logga-introt tonat bort, se script i botten av sidan -->
+    <video id="nt-hero-video" muted loop playsinline poster="assets/img/hero/hero-video-poster.jpg">
+      <source src="assets/img/hero/hero-video.mp4" type="video/mp4">
     </video>
     <div class="nt-hero-overlay"></div>
 
@@ -661,5 +660,16 @@
   <script src="assets/js/slider-init.js"></script>
   <script src="assets/js/main.js"></script>
   <script src="assets/js/modal.js"></script>
+  <script>
+    // Hero-videon börjar spela upp först när logga-introt har tonat bort helt
+    (function () {
+      var heroVideo = document.getElementById('nt-hero-video');
+      var logoIntro = document.querySelector('.nt-hero-logo-intro');
+      if (!heroVideo || !logoIntro) return;
+      logoIntro.addEventListener('animationend', function () {
+        heroVideo.play();
+      });
+    })();
+  </script>
 </body>
 </html>
