@@ -19,6 +19,8 @@
 
 /* Bootstrap rows with large gutters (`g-5`) are wider than their container by half
    the gutter on each side, which produced ~9px of horizontal scroll on phones.
+   Needs to be on both `html` and `body` — `body` alone doesn't stop the viewport
+   itself from scrolling horizontally (tested in Chromium and WebKit).
    Safe here because the sticky header is `position: fixed`, not `sticky`. */
 html, body {
   overflow-x: hidden;
@@ -91,9 +93,16 @@ html, body {
 .tpheader {
   background-color: var(--nt-white) !important;
 }
+/* budgeto's default sticky-header entrance (main.css: headerSlideDown) animates
+   margin-top from -150px to 0 over ~1s. Since the header is only ~90px tall, for
+   most of that transition it's still sliding up from fully off-screen — the
+   bottom edge appears first, reading as if the nav is cropped/cut off at the top
+   until it finishes settling. Swap it for a plain fade so it never looks clipped. */
+@keyframes ntHeaderStickyIn { from { opacity: 0; } to { opacity: 1; } }
 .tpheader.header-sticky {
   background-color: var(--nt-white) !important;
   box-shadow: 0 2px 20px rgba(28,46,74,0.12);
+  animation: ntHeaderStickyIn .3s ease both;
 }
 .main-menu ul li a {
   color: var(--nt-navy) !important;
