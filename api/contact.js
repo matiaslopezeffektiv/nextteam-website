@@ -22,6 +22,7 @@ module.exports = async (req, res) => {
   const heading = type === 'hire'
     ? 'Ny förfrågan: Hyr personal'
     : 'Nytt meddelande från kontaktformuläret';
+  const subject = 'Nytt meddelande från Next Team';
 
   const html = `
     <h2>${heading}</h2>
@@ -35,12 +36,16 @@ module.exports = async (req, res) => {
   `;
 
   try {
+    const toEmails = process.env.CONTACT_TO_EMAIL
+      ? process.env.CONTACT_TO_EMAIL.split(',').map((addr) => addr.trim())
+      : ['info@nextteam.se', 'matias@effektivmedia.nu'];
+
     const resend = new Resend(process.env.RESEND_API_KEY);
     const { error } = await resend.emails.send({
-      from: process.env.RESEND_FROM || 'Next Team <onboarding@resend.dev>',
-      to: process.env.CONTACT_TO_EMAIL || 'info@nextteam.se',
+      from: process.env.RESEND_FROM || 'Next Team <no-reply@effektivmedia.nu>',
+      to: toEmails,
       reply_to: email,
-      subject: heading,
+      subject,
       html,
     });
 
